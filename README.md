@@ -20,7 +20,8 @@ How It Works:
 6. Final result saved in DynamoDB.
 
 Architecture Diagram:
-(see image below)
+![Architecture](architecture.png)
+
 
 Skills Used:
 SES, S3, Lambda, Comprehend, DynamoDB, IAM Roles, SNS
