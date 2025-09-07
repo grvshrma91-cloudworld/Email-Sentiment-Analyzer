@@ -1,28 +1,30 @@
 Email Sentiment Analyzer (AWS POC)
 
-Business Problem:
-As part of procurement and sales, we used to get hundreds of customer support emails.  
-It was difficult to prioritize not satisfied customers manually and respond on time.
+Problem Statement:
+Reading and replying to customer support emails manually was slow and inconsistent in tone detection.
 
 Solution:
-I built a POC on AWS that:
-- Uses S3 or SES to receive emails
-- Triggers a Lambda function on new email
-- Uses Comprehend to detect sentiment (Positive, Neutral, Negative)
-- Sends alert via SNS for Negative/Angry emails
+Created a POC on AWS using:
+- SES to receive support emails.
+- S3 to store raw `.eml` files.
+- Lambda to extract content and run sentiment analysis.
+- Comprehend to detect emotions (Positive, Negative, etc.).
+- DynamoDB to store structured data like email, tone, subject.
 
-Architecture Flow:
-- Customer sends support email  
-- Email stored in S3 (simulated SES)  
-- Lambda triggers on upload  
-- Comprehend analyzes email text  
-- If Negative → SNS sends alert  
-- All results stored in CloudWatch logs
+How It Works:
+1. Email received via AWS SES.
+2. Stored in S3 automatically.
+3. SNS triggers a Lambda.
+4. Lambda reads the email content.
+5. AWS Comprehend detects the tone.
+6. Final result saved in DynamoDB.
 
-AWS Services Used:
-S3, Lambda, Comprehend, SNS, IAM Roles, CloudWatch
+Architecture Diagram:
+(see image below)
 
-Business Value:
-- Alerts for angry customers in real-time  
-- Speeds up support response  
-- Helps prioritize and tag incoming emails  
+Skills Used:
+SES, S3, Lambda, Comprehend, DynamoDB, IAM Roles, SNS
+
+Business Impact:
+- Automatically tags customer mood (Positive/Negative/Neutral)
+- Faster and more accurate
